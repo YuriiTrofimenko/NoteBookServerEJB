@@ -1,0 +1,34 @@
+1. переходим в папку с проектом
+cd "C:\Documents and Settings\јдминистратор\ћои документы\NetBeansProjects\NoteBookServer"
+
+2. инициализируем пустой репозиторий
+git init
+
+3. создаем файл со списком папок и файлов, которые не будут под версионным контролем программы git
+.gitignore
+
+4. проверим состо€ние репозитори€
+git status
+
+5. ставим все файлы и папки, кроме проигнорированных, под контроль
+git add .
+
+6. делаем первую запись в журнале git
+git commit -a -m"init"
+
+7. в первый раз нужно представитьс€
+git config --global user.email "tyaa@ukr.net"
+git config --global user.name "YuriiTrofimenko"
+
+8.создаем на странице гитхаб пустой репозиторий без файла md,
+а в консоли указываем его адрес
+git remote add origin https://github.com/online123456/notebook.git
+
+9. отправл€ем изменени€ из локального репозитори€ на удаленный
+git push -u origin master
+
+10. чтобы выкачать репозиторий на любой компьютер:
+git clone https://github.com/online123456/notebook.git
+
+11. чтобы получить из удаленного репозитори€ изменени€
+git pull
