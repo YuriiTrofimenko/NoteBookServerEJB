@@ -42,8 +42,8 @@ public class State implements Serializable {
     @Size(min = 1, max = 25)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "stateId")
-    private Collection<Order1> order1Collection;
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "stateId")
+    private Collection<Order1> order1Collection;*/
 
     public State() {
     }
@@ -73,13 +73,13 @@ public class State implements Serializable {
         this.name = name;
     }
 
-    public Collection<Order1> getOrder1Collection() {
+    /*public Collection<Order1> getOrder1Collection() {
         return order1Collection;
     }
 
     public void setOrder1Collection(Collection<Order1> order1Collection) {
         this.order1Collection = order1Collection;
-    }
+    }*/
 
     @Override
     public int hashCode() {

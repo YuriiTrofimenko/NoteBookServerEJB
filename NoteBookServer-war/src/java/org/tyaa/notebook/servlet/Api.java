@@ -6,8 +6,10 @@
 package org.tyaa.notebook.servlet;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,19 +44,62 @@ public class Api extends HttpServlet {
         
         //response.setContentType("text/html;charset=UTF-8");
         Gson gson = new Gson();
+                /*new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();*/
         response.setContentType("text/plain;charset=UTF-8");
         
-        order1Facade.count();
+        //order1Facade.count();
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            /*out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Api</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Api at " + request.getContextPath() + "</h1>");*/
-            out.print(gson.toJson(stateFacade.findAll()));
+            
+            if (request.getParameterMap().keySet().contains("action")) {
+                
+                switch(request.getParameter("action")) {
+                    case "get_states" : {
+                    
+                        try {
+                            out.print(gson.toJson(stateFacade.findAll()));
+                        } catch (Exception e) {
+                            out.print(gson.toJson("error"));
+                        }
+                        break;
+                    }
+                    case "get_orders" : {
+                    
+                        try {
+                            out.print(gson.toJson(order1Facade.findAll()));
+                        } catch (Exception e) {
+                            out.print(gson.toJson("error"));
+                        }
+                        break;
+                    }
+                    /*case "create_order" : {
+                    
+                        try {
+                            String customerName = request.getParameter("customer_name");
+                            String description = request.getParameter("description");
+                            State state = stateFacade.findByName("created");
+                            
+                            if (state == null) {
+                                
+                                out.print(gson.toJson("State not exists"));
+                                break;
+                            }
+                            
+                            Order1 order1 = new Order1();
+                            order1.setCustomerName(customerName);
+                            order1.setDescription(description);
+                            order1.setCreatedAt(new Date());
+                            order1.setStateId(state);
+                            order1Facade.create(order1);
+                            out.print(gson.toJson("ok"));
+                        } catch (Exception e) {
+                            out.print(gson.toJson("error"));
+                        }
+                    }*/
+                }
+            }
+            
+            //out.print(gson.toJson(stateFacade.findAll()));
             /*stateFacade.findAll().forEach((state) -> {
                 out.printf("id = %d; name = %s\n", state.getId(), state.getName());
             });*/ /*out.println("</body>");

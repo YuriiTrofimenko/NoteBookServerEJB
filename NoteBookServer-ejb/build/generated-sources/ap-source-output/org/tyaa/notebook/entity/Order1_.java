@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.tyaa.notebook.entity.State;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-12-09T11:49:29")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-01-18T18:20:22")
 @StaticMetamodel(Order1.class)
 public class Order1_ { 
 

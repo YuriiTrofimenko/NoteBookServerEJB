@@ -1,1 +1,10 @@
 ﻿build/*
+/NoteBookServer-war/nbproject/private/
+/nbproject/private/
+/NoteBookServer-war/dist/
+/NoteBookServer-war/build/
+/NoteBookServer-ejb/nbproject/private/
+/NoteBookServer-ejb/dist/
+/NoteBookServer-ejb/build/
+/dist/
+/build/
