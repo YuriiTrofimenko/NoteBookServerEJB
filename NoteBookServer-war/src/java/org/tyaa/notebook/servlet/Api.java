@@ -10,11 +10,13 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.tyaa.notebook.entity.Order1;
 import org.tyaa.notebook.entity.State;
 import org.tyaa.notebook.facade.Order1Facade;
 import org.tyaa.notebook.facade.StateFacade;
@@ -46,7 +48,7 @@ public class Api extends HttpServlet {
         Gson gson = new Gson();
                 /*new GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();*/
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         
         //order1Facade.count();
         try (PrintWriter out = response.getWriter()) {
@@ -72,12 +74,12 @@ public class Api extends HttpServlet {
                         }
                         break;
                     }
-                    /*case "create_order" : {
+                    case "create_order" : {
                     
                         try {
                             String customerName = request.getParameter("customer_name");
                             String description = request.getParameter("description");
-                            State state = stateFacade.findByName("created");
+                            State state = stateFacade.getStateByName("created");
                             
                             if (state == null) {
                                 
@@ -86,16 +88,16 @@ public class Api extends HttpServlet {
                             }
                             
                             Order1 order1 = new Order1();
-                            order1.setCustomerName(customerName);
-                            order1.setDescription(description);
-                            order1.setCreatedAt(new Date());
+                            order1.setCustomer(customerName);
+                            order1.setText(description);
+                            order1.setDate(new Date());
                             order1.setStateId(state);
                             order1Facade.create(order1);
                             out.print(gson.toJson("ok"));
                         } catch (Exception e) {
                             out.print(gson.toJson("error"));
                         }
-                    }*/
+                    }
                 }
             }
             
